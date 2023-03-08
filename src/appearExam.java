@@ -281,6 +281,9 @@ public class appearExam {
 					if(result)
 					{
 						JOptionPane.showMessageDialog(null, "Exam is submitted successfully!\nYou have scored "+marksScored+" Marks Out of "+totalMarks+" Marks");
+						qno=0;
+						marksScored=0;
+						totalMarks=0;
 						frame.setVisible(false);
 						studenthome.main(null);
 					}

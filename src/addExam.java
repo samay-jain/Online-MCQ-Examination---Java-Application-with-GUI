@@ -12,6 +12,8 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class addExam {
 
@@ -40,10 +42,9 @@ public class addExam {
 	public static int nq;
 	DBCONNECT db = new DBCONNECT();
 	private JTextField textsub;
-	private JTextField textdept;
-	private JTextField textyear;
 	private JTextField textdivision;
 	private JTextField textquestions;
+	public static JComboBox textdept,textyear;
 	public addExam() {
 		db.connect();
 		initialize();
@@ -103,18 +104,6 @@ public class addExam {
 		lblQuestions.setBounds(56, 382, 286, 43);
 		panel.add(lblQuestions);
 		
-		textdept = new JTextField();
-		textdept.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		textdept.setColumns(10);
-		textdept.setBounds(230, 136, 222, 43);
-		panel.add(textdept);
-		
-		textyear = new JTextField();
-		textyear.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		textyear.setColumns(10);
-		textyear.setBounds(141, 222, 206, 43);
-		panel.add(textyear);
-		
 		textdivision = new JTextField();
 		textdivision.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		textdivision.setColumns(10);
@@ -126,6 +115,18 @@ public class addExam {
 		textquestions.setColumns(10);
 		textquestions.setBounds(333, 382, 113, 43);
 		panel.add(textquestions);
+		
+		textdept = new JComboBox();
+		textdept.setModel(new DefaultComboBoxModel(new String[] {"", "CSE", "IT", "MECHANICAL", "E&TC", "ELECTRONICS", "ECS"}));
+		textdept.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		textdept.setBounds(234, 136, 222, 43);
+		panel.add(textdept);
+		
+		textyear = new JComboBox();
+		textyear.setModel(new DefaultComboBoxModel(new String[] {"", "1", "2", "3", "4"}));
+		textyear.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		textyear.setBounds(149, 222, 206, 43);
+		panel.add(textyear);
 		
 		JButton btnReturn = new JButton("return");
 		btnReturn.setBackground(new Color(255, 204, 204));
@@ -143,11 +144,38 @@ public class addExam {
 		btnAddQuestions.setBackground(new Color(255, 204, 204));
 		btnAddQuestions.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String sub = textsub.getText();
-				String year = textyear.getText();
-				String dept = textdept.getText();
-				String div = textdivision.getText();
-				String ques = textquestions.getText();
+				int ind=-1;
+				String sub,year,dept,div,ques;
+				sub = textsub.getText();
+				ind = textyear.getSelectedIndex();
+				if(ind == 1)
+					year = "1";
+				else if(ind == 2)
+					year = "2";
+				else if(ind == 3)
+					year = "3";
+				else if(ind == 4)
+					year = "4";
+				else
+					year="";
+				ind=-1;
+				ind = textdept.getSelectedIndex();
+				if(ind == 1)
+					dept = "CSE";
+				else if(ind == 2)
+					dept = "IT";
+				else if(ind == 3)
+					dept = "MECHANICAL";
+				else if(ind == 4)
+					dept = "E&TC";
+				else if(ind == 5)
+					dept = "ELECTRONICS";
+				else if(ind == 6)
+					dept = "ECS";
+				else
+					dept="";
+				div = textdivision.getText();
+				ques = textquestions.getText();
 				if(sub.isEmpty() || year.isEmpty() || dept.isEmpty() || div.isEmpty() || ques.isEmpty())
 				{
 					JOptionPane.showMessageDialog(null, "Please enter all required details!");

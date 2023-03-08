@@ -134,6 +134,7 @@ public class deleteExam {
 			}
 			else
 			{
+				clear();
 				JOptionPane.showMessageDialog(null, "Please enter ExamID to proceed!");
 			}
 			}

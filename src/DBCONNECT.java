@@ -133,7 +133,17 @@ public class DBCONNECT
 	public boolean deleteMcqdb(String examID)
 	{
 		try {
-			String query="delete from mcqdb where id=? and teacherid=?";
+			String query="delete from attempted where id=?";
+			stmt = con.prepareStatement(query);
+			stmt.setString(1, examID);
+			stmt.executeUpdate();
+			
+			query="delete from mcqquestions where id=?";
+			stmt = con.prepareStatement(query);
+			stmt.setString(1, examID);
+			stmt.executeUpdate();
+			
+			query="delete from mcqdb where id=? and teacherid=?";
 			stmt = con.prepareStatement(query);
 			stmt.setString(1, examID);
 			stmt.setString(2, teacherlogin.tid);

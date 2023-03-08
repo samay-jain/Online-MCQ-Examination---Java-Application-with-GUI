@@ -13,6 +13,8 @@ import javax.swing.JPasswordField;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class signupstudent {
 
@@ -22,9 +24,8 @@ public class signupstudent {
 	private JTextField fname;
 	private JTextField enroll;
 	private JTextField roll;
-	private JTextField dept;
 	private JTextField division;
-	private JTextField year;
+	public static JComboBox dept,year;
 
 	/**
 	 * Launch the application.
@@ -100,12 +101,42 @@ public class signupstudent {
 		btnSignIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
+				int ind=-1;
 				String en,name,dep,yea,div,rol,email,pass,cp;
 				en = enroll.getText();
 				name = fname.getText();
-				dep = dept.getText();
+				ind = dept.getSelectedIndex();
+
+				if(ind == 1)
+					dep = "CSE";
+				else if(ind == 2)
+					dep = "IT";
+				else if(ind == 3)
+					dep = "MECHANICAL";
+				else if(ind == 4)
+					dep = "E&TC";
+				else if(ind == 5)
+					dep = "ELECTRONICS";
+				else if(ind == 6)
+					dep = "ECS";
+				else
+					dep="";
+
 				rol = roll.getText();
-				yea = year.getText();
+				ind=-1;
+				ind = year.getSelectedIndex();
+
+				if(ind == 1)
+					yea = "1";
+				else if(ind == 2)
+					yea = "2";
+				else if(ind == 3)
+					yea = "3";
+				else if(ind == 4)
+					yea = "4";
+				else
+					yea="";
+
 				div = division.getText();
 				email = uname.getText();
 				pass = password.getText();
@@ -195,12 +226,6 @@ public class signupstudent {
 		roll.setBounds(610, 127, 132, 37);
 		panel.add(roll);
 		
-		dept = new JTextField();
-		dept.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		dept.setColumns(10);
-		dept.setBounds(153, 127, 259, 37);
-		panel.add(dept);
-		
 		division = new JTextField();
 		division.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		division.setColumns(10);
@@ -225,18 +250,23 @@ public class signupstudent {
 		lblYear.setBounds(456, 189, 143, 40);
 		panel.add(lblYear);
 		
-		year = new JTextField();
-		year.setToolTipText("1,2,3,4");
-		year.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		year.setColumns(10);
-		year.setBounds(610, 192, 132, 37);
-		panel.add(year);
-		
 		password = new JTextField();
 		password.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		password.setColumns(10);
 		password.setBounds(333, 307, 259, 37);
 		panel.add(password);
+		
+		dept = new JComboBox();
+		dept.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		dept.setModel(new DefaultComboBoxModel(new String[] {"", "CSE", "IT", "MECHANICAL", "E&TC", "ELECTRONICS", "ECS"}));
+		dept.setBounds(153, 127, 259, 33);
+		panel.add(dept);
+		
+		year = new JComboBox();
+		year.setModel(new DefaultComboBoxModel(new String[] {"", "1", "2", "3", "4"}));
+		year.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		year.setBounds(610, 196, 132, 33);
+		panel.add(year);
 		//frame.setVisible(true);
 	}
 }

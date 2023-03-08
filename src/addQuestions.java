@@ -201,7 +201,7 @@ public class addQuestions {
 					boolean result = db.enterQuestions(question,optionA,optionB,optionC,optionD,ans,m);
 					if(result)
 					{
-						update();
+						qnum+=1;
 						que.setText("");
 						op1.setText("");
 						op2.setText("");
@@ -212,11 +212,13 @@ public class addQuestions {
 						if(qnum>addExam.nq)
 						{
 							JOptionPane.showMessageDialog(null, "Examination is successfully created and ready for students!");
+							qnum=1;
 							frame.setVisible(false);
 							teacherhome.main(null);
 						}
 						else
 						{
+							lblQuestionNumber.setText("Question Number - "+qnum);
 							JOptionPane.showMessageDialog(null, "Question is Added Successfully!");
 						}
 					}
@@ -228,10 +230,5 @@ public class addQuestions {
 		btnAddQuestion.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnAddQuestion.setBounds(425, 608, 185, 33);
 		frame.getContentPane().add(btnAddQuestion);
-	}
-	public void update()
-	{
-		qnum+=1;
-		lblQuestionNumber.setText("Question Number - "+qnum);
 	}
 }
