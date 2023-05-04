@@ -20,6 +20,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.Color;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.Frame;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class appearExam {
 
@@ -75,30 +79,26 @@ public class appearExam {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
+		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		frame.getContentPane().setBackground(new Color(153, 204, 255));
 		frame.setBounds(100, 100, 1054, 684);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 		
 		JLabel lblSubjectexam = new JLabel("Subject/Exam - "+sub);
 		lblSubjectexam.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSubjectexam.setFont(new Font("Tahoma", Font.BOLD, 32));
-		lblSubjectexam.setBounds(234, 0, 612, 78);
-		frame.getContentPane().add(lblSubjectexam);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(204, 204, 255));
 		panel.setLayout(null);
-		panel.setBounds(10, 88, 1019, 466);
-		frame.getContentPane().add(panel);
 		
 		JLabel lblQuestion = new JLabel("Question - ");
 		lblQuestion.setFont(new Font("Tahoma", Font.BOLD, 24));
-		lblQuestion.setBounds(10, 10, 142, 43);
+		lblQuestion.setBounds(10, 29, 148, 43);
 		panel.add(lblQuestion);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(162, 10, 828, 116);
+		scrollPane.setBounds(160, 29, 828, 116);
 		panel.add(scrollPane);
 		
 		final JTextArea textQ = new JTextArea();
@@ -109,7 +109,7 @@ public class appearExam {
 		textQ.setEditable(false);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(186, 136, 802, 43);
+		scrollPane_1.setBounds(186, 155, 802, 43);
 		panel.add(scrollPane_1);
 		
 		final JTextArea textOp1 = new JTextArea();
@@ -120,7 +120,7 @@ public class appearExam {
 		textOp1.setEditable(false);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(186, 203, 800, 41);
+		scrollPane_2.setBounds(186, 233, 800, 41);
 		panel.add(scrollPane_2);
 		
 		final JTextArea textOp2 = new JTextArea();
@@ -131,7 +131,7 @@ public class appearExam {
 		textOp2.setEditable(false);
 		
 		JScrollPane scrollPane_3 = new JScrollPane();
-		scrollPane_3.setBounds(186, 274, 798, 39);
+		scrollPane_3.setBounds(186, 316, 798, 39);
 		panel.add(scrollPane_3);
 		
 		final JTextArea textOp3 = new JTextArea();
@@ -142,7 +142,7 @@ public class appearExam {
 		textOp3.setEditable(false);
 		
 		JScrollPane scrollPane_4 = new JScrollPane();
-		scrollPane_4.setBounds(188, 342, 796, 39);
+		scrollPane_4.setBounds(186, 394, 796, 39);
 		panel.add(scrollPane_4);
 		
 		final JTextArea textOp4 = new JTextArea();
@@ -168,7 +168,7 @@ public class appearExam {
 			}
 		});
 		opA.setFont(new Font("Tahoma", Font.BOLD, 23));
-		opA.setBounds(10, 132, 172, 43);
+		opA.setBounds(10, 155, 170, 43);
 		panel.add(opA);
 		
 		opB = new JCheckBox("Option B -");
@@ -187,7 +187,7 @@ public class appearExam {
 			}
 		});
 		opB.setFont(new Font("Tahoma", Font.BOLD, 23));
-		opB.setBounds(10, 201, 170, 43);
+		opB.setBounds(10, 233, 170, 43);
 		panel.add(opB);
 		
 		opC = new JCheckBox("Option C -");
@@ -206,7 +206,7 @@ public class appearExam {
 			}
 		});
 		opC.setFont(new Font("Tahoma", Font.BOLD, 23));
-		opC.setBounds(10, 270, 168, 43);
+		opC.setBounds(10, 316, 168, 43);
 		panel.add(opC);
 		
 		opD = new JCheckBox("Option D -");
@@ -225,8 +225,44 @@ public class appearExam {
 			}
 		});
 		opD.setFont(new Font("Tahoma", Font.BOLD, 23));
-		opD.setBounds(10, 338, 168, 43);
+		opD.setBounds(10, 394, 168, 43);
 		panel.add(opD);
+		
+		JLabel lblMarks = new JLabel("Marks -");
+		lblMarks.setFont(new Font("Tahoma", Font.BOLD, 24));
+		
+		textM = new JTextField();
+		textM.setEditable(false);
+		textM.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		textM.setColumns(10);
+		
+		JButton btnClear = new JButton("Clear");
+		btnClear.setBackground(new Color(255, 204, 204));
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				opA.setSelected(false);
+				opB.setSelected(false);
+				opC.setSelected(false);
+				opD.setSelected(false);
+			}
+		});
+		btnClear.setFont(new Font("Tahoma", Font.BOLD, 20));
+		
+		JLabel lblExamId = new JLabel("Exam ID - "+examID);
+		lblExamId.setFont(new Font("Tahoma", Font.BOLD, 20));
+		
+		JLabel lblTotalQuestions = new JLabel("Total Questions - "+questions);
+		lblTotalQuestions.setFont(new Font("Tahoma", Font.BOLD, 20));
+		
+		textM.setText(marks);
+		textQ.setText(q);
+		textOp1.setText(op1);
+		textOp2.setText(op2);
+		textOp3.setText(op3);
+		textOp4.setText(op4);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(204, 204, 255));
 		
 		JButton btnSaveAndNext = new JButton("Save and Next");
 		btnSaveAndNext.setBackground(new Color(255, 204, 204));
@@ -295,50 +331,76 @@ public class appearExam {
 			}
 		});
 		btnSaveAndNext.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnSaveAndNext.setBounds(413, 408, 195, 33);
-		panel.add(btnSaveAndNext);
-		
-		JLabel lblMarks = new JLabel("Marks -");
-		lblMarks.setBounds(878, 44, 103, 43);
-		frame.getContentPane().add(lblMarks);
-		lblMarks.setFont(new Font("Tahoma", Font.BOLD, 24));
-		
-		textM = new JTextField();
-		textM.setBounds(976, 47, 54, 39);
-		frame.getContentPane().add(textM);
-		textM.setEditable(false);
-		textM.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		textM.setColumns(10);
-		
-		JButton btnClear = new JButton("Clear");
-		btnClear.setBackground(new Color(255, 204, 204));
-		btnClear.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				opA.setSelected(false);
-				opB.setSelected(false);
-				opC.setSelected(false);
-				opD.setSelected(false);
-			}
-		});
-		btnClear.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnClear.setBounds(457, 584, 120, 33);
-		frame.getContentPane().add(btnClear);
-		
-		JLabel lblExamId = new JLabel("Exam ID - "+examID);
-		lblExamId.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblExamId.setBounds(10, 0, 164, 33);
-		frame.getContentPane().add(lblExamId);
-		
-		JLabel lblTotalQuestions = new JLabel("Total Questions - "+questions);
-		lblTotalQuestions.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblTotalQuestions.setBounds(10, 28, 232, 33);
-		frame.getContentPane().add(lblTotalQuestions);
-		
-		textM.setText(marks);
-		textQ.setText(q);
-		textOp1.setText(op1);
-		textOp2.setText(op2);
-		textOp3.setText(op3);
-		textOp4.setText(op4);
+		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+		gl_panel_1.setHorizontalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnSaveAndNext, GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+					.addGap(12))
+		);
+		gl_panel_1.setVerticalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnSaveAndNext)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		panel_1.setLayout(gl_panel_1);
+		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(10)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(224)
+							.addComponent(lblSubjectexam, GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE))
+						.addComponent(lblTotalQuestions, GroupLayout.PREFERRED_SIZE, 232, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblExamId, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE))
+					.addGap(23)
+					.addComponent(lblMarks, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(textM, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(409)
+					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 217, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(414, Short.MAX_VALUE))
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(449)
+					.addComponent(btnClear, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(457, Short.MAX_VALUE))
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(11)
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 1019, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblSubjectexam, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(28)
+									.addComponent(lblTotalQuestions, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+								.addComponent(lblExamId, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+							.addGap(2))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblMarks, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textM, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
+							.addGap(18)))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 455, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnClear)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		frame.getContentPane().setLayout(groupLayout);
 	}
 }

@@ -18,6 +18,10 @@ import java.util.HashMap;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JPanel;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.Frame;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class studenthome {
 
@@ -65,94 +69,80 @@ public class studenthome {
 		frame.getContentPane().setBackground(new Color(153, 204, 255));
 		frame.setBounds(100, 100, 1006, 675);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 		
 		six = new JButton("");
+		six.setBounds(49, 563, 156, 48);
 		six.setBackground(new Color(255, 204, 204));
 		six.setFont(new Font("Tahoma", Font.BOLD, 18));
-		six.setBounds(49, 563, 156, 48);
-		frame.getContentPane().add(six);
 		
 		seven = new JButton("");
+		seven.setBounds(231, 563, 158, 48);
 		seven.setBackground(new Color(255, 204, 204));
 		seven.setFont(new Font("Tahoma", Font.BOLD, 18));
-		seven.setBounds(231, 563, 158, 48);
-		frame.getContentPane().add(seven);
 		
 		eight = new JButton("");
+		eight.setBounds(412, 563, 159, 48);
 		eight.setBackground(new Color(255, 204, 204));
 		eight.setFont(new Font("Tahoma", Font.BOLD, 18));
-		eight.setBounds(412, 563, 159, 48);
-		frame.getContentPane().add(eight);
 		
 		nine = new JButton("");
+		nine.setBounds(611, 563, 152, 48);
 		nine.setBackground(new Color(255, 204, 204));
 		nine.setFont(new Font("Tahoma", Font.BOLD, 18));
-		nine.setBounds(611, 563, 152, 48);
-		frame.getContentPane().add(nine);
 		
 		ten = new JButton("");
+		ten.setBounds(783, 563, 152, 48);
 		ten.setBackground(new Color(255, 204, 204));
 		ten.setFont(new Font("Tahoma", Font.BOLD, 18));
-		ten.setBounds(783, 563, 152, 48);
-		frame.getContentPane().add(ten);
 		
 		five = new JButton("");
+		five.setBounds(783, 483, 152, 48);
 		five.setBackground(new Color(255, 204, 204));
 		five.setFont(new Font("Tahoma", Font.BOLD, 18));
-		five.setBounds(783, 483, 152, 48);
-		frame.getContentPane().add(five);
 		
 		four = new JButton("");
+		four.setBounds(611, 483, 152, 48);
 		four.setBackground(new Color(255, 204, 204));
 		four.setFont(new Font("Tahoma", Font.BOLD, 18));
-		four.setBounds(611, 483, 152, 48);
-		frame.getContentPane().add(four);
 		
 		three = new JButton("");
+		three.setBounds(412, 483, 159, 48);
 		three.setBackground(new Color(255, 204, 204));
 		three.setFont(new Font("Tahoma", Font.BOLD, 18));
-		three.setBounds(412, 483, 159, 48);
-		frame.getContentPane().add(three);
 		
 		two = new JButton("");
+		two.setBounds(231, 483, 158, 48);
 		two.setBackground(new Color(255, 204, 204));
 		two.setFont(new Font("Tahoma", Font.BOLD, 18));
-		two.setBounds(231, 483, 158, 48);
-		frame.getContentPane().add(two);
 		
 		one = new JButton("");
+		one.setBounds(49, 483, 156, 48);
 		one.setBackground(new Color(255, 204, 204));
 		one.setFont(new Font("Tahoma", Font.BOLD, 18));
-		one.setBounds(49, 483, 156, 48);
-		frame.getContentPane().add(one);
 		
 		JLabel lblAvailableTests = new JLabel("All Exams for you");
+		lblAvailableTests.setBounds(295, 26, 431, 78);
 		lblAvailableTests.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAvailableTests.setFont(new Font("Tahoma", Font.BOLD, 32));
-		lblAvailableTests.setBounds(295, 26, 431, 78);
-		frame.getContentPane().add(lblAvailableTests);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(39, 114, 917, 306);
-		frame.getContentPane().add(scrollPane);
 		
 		table = new JTable();
 		table.setBackground(new Color(204, 204, 255));
 		scrollPane.setViewportView(table);
 		
 		JLabel lblName = new JLabel("Name - "+db.getName(loginApp.getEnroll()));
-		lblName.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblName.setBounds(10, 0, 431, 38);
-		frame.getContentPane().add(lblName);
+		lblName.setFont(new Font("Tahoma", Font.BOLD, 18));
 		
 		JLabel lblEnrollid = new JLabel("EnrollID - "+loginApp.getEnroll());
-		lblEnrollid.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblEnrollid.setBounds(10, 37, 281, 38);
-		frame.getContentPane().add(lblEnrollid);
+		lblEnrollid.setFont(new Font("Tahoma", Font.BOLD, 18));
 		
 
 		JButton btnLogOut = new JButton("log out");
+		btnLogOut.setBounds(807, 12, 175, 38);
 		btnLogOut.setBackground(new Color(255, 204, 204));
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -161,18 +151,32 @@ public class studenthome {
 			}
 		});
 		btnLogOut.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnLogOut.setBounds(807, 12, 175, 38);
-		frame.getContentPane().add(btnLogOut);
 		
 		JLabel lblAvailableExamsAre = new JLabel("Available Exams are given below");
+		lblAvailableExamsAre.setBounds(203, 423, 570, 38);
 		lblAvailableExamsAre.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAvailableExamsAre.setFont(new Font("Tahoma", Font.BOLD, 28));
-		lblAvailableExamsAre.setBounds(203, 423, 570, 38);
-		frame.getContentPane().add(lblAvailableExamsAre);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(204, 204, 255));
 		panel.setBounds(22, 467, 949, 161);
+		panel.setBackground(new Color(204, 204, 255));
+		frame.getContentPane().setLayout(null);
+		frame.getContentPane().add(six);
+		frame.getContentPane().add(seven);
+		frame.getContentPane().add(eight);
+		frame.getContentPane().add(nine);
+		frame.getContentPane().add(ten);
+		frame.getContentPane().add(five);
+		frame.getContentPane().add(four);
+		frame.getContentPane().add(three);
+		frame.getContentPane().add(two);
+		frame.getContentPane().add(one);
+		frame.getContentPane().add(lblAvailableTests);
+		frame.getContentPane().add(scrollPane);
+		frame.getContentPane().add(lblName);
+		frame.getContentPane().add(lblEnrollid);
+		frame.getContentPane().add(btnLogOut);
+		frame.getContentPane().add(lblAvailableExamsAre);
 		frame.getContentPane().add(panel);
 	}
 	public void printExams()

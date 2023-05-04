@@ -14,6 +14,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class addExam {
 
@@ -59,18 +61,13 @@ public class addExam {
 		frame.getContentPane().setBackground(new Color(153, 204, 255));
 		frame.setBounds(100, 100, 1009, 656);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 		
 		JLabel lblAddExamination = new JLabel("Add Examination");
 		lblAddExamination.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAddExamination.setFont(new Font("Tahoma", Font.BOLD, 32));
-		lblAddExamination.setBounds(267, 0, 470, 78);
-		frame.getContentPane().add(lblAddExamination);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(204, 204, 255));
-		panel.setBounds(89, 76, 820, 480);
-		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblExamTitleSubject = new JLabel("Exam Title/Subject -");
@@ -137,8 +134,6 @@ public class addExam {
 			}
 		});
 		btnReturn.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnReturn.setBounds(267, 566, 179, 43);
-		frame.getContentPane().add(btnReturn);
 		
 		JButton btnAddQuestions = new JButton("Add Questions");
 		btnAddQuestions.setBackground(new Color(255, 204, 204));
@@ -196,8 +191,39 @@ public class addExam {
 			}
 		});
 		btnAddQuestions.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnAddQuestions.setBounds(509, 566, 179, 43);
-		frame.getContentPane().add(btnAddQuestions);
+		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(89)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(178)
+							.addComponent(lblAddExamination, GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+							.addGap(172)))
+					.addGap(86))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(267)
+					.addComponent(btnReturn, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
+					.addGap(63)
+					.addComponent(btnAddQuestions, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(76)
+							.addComponent(panel, GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
+						.addComponent(lblAddExamination, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE))
+					.addGap(10)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnReturn, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnAddQuestions, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
+					.addGap(10))
+		);
+		frame.getContentPane().setLayout(groupLayout);
 	}
 
 }

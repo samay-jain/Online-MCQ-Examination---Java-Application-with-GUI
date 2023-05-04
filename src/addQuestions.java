@@ -15,6 +15,10 @@ import javax.swing.JFormattedTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Frame;
 
 public class addQuestions {
 
@@ -53,22 +57,17 @@ public class addQuestions {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setResizable(false);
+		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		frame.getContentPane().setBackground(new Color(153, 204, 255));
 		frame.setBounds(100, 100, 1074, 688);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 		
 		lblQuestionNumber = new JLabel("Question Number - "+qnum);
 		lblQuestionNumber.setHorizontalAlignment(SwingConstants.CENTER);
 		lblQuestionNumber.setFont(new Font("Tahoma", Font.BOLD, 32));
-		lblQuestionNumber.setBounds(283, 10, 470, 78);
-		frame.getContentPane().add(lblQuestionNumber);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(204, 204, 255));
-		panel.setBounds(20, 101, 1019, 497);
-		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblQuestion = new JLabel("Question - ");
@@ -228,7 +227,33 @@ public class addQuestions {
 			}
 		});
 		btnAddQuestion.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnAddQuestion.setBounds(425, 608, 185, 33);
-		frame.getContentPane().add(btnAddQuestion);
+		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(283)
+					.addComponent(lblQuestionNumber, GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+					.addGap(307))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(20)
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 1019, Short.MAX_VALUE)
+					.addGap(21))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(425)
+					.addComponent(btnAddQuestion, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(450, Short.MAX_VALUE))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(10)
+					.addComponent(lblQuestionNumber, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE)
+					.addGap(13)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 497, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(btnAddQuestion)
+					.addContainerGap(10, Short.MAX_VALUE))
+		);
+		frame.getContentPane().setLayout(groupLayout);
 	}
 }

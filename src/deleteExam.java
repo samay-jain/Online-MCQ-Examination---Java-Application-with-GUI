@@ -19,6 +19,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.Color;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.Frame;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class deleteExam {
 
@@ -76,21 +80,17 @@ public class deleteExam {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		frame.setResizable(false);
 		frame.getContentPane().setBackground(new Color(153, 204, 255));
 		frame.setBounds(100, 100, 998, 676);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 		
 		JLabel lblDeleteExamination = new JLabel("Delete Examination");
 		lblDeleteExamination.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDeleteExamination.setFont(new Font("Tahoma", Font.BOLD, 32));
-		lblDeleteExamination.setBounds(263, 0, 470, 78);
-		frame.getContentPane().add(lblDeleteExamination);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(106, 76, 778, 351);
-		frame.getContentPane().add(scrollPane);
 		
 		table = new JTable();
 		table.setBackground(new Color(204, 204, 255));
@@ -98,8 +98,6 @@ public class deleteExam {
 		
 		JLabel lblEnterExamId = new JLabel("Enter Exam ID -");
 		lblEnterExamId.setFont(new Font("Tahoma", Font.BOLD, 22));
-		lblEnterExamId.setBounds(106, 448, 180, 39);
-		frame.getContentPane().add(lblEnterExamId);
 		
 		textid = new JTextField();
 		textid.addKeyListener(new KeyAdapter() {
@@ -141,63 +139,127 @@ public class deleteExam {
 		});
 		textid.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		textid.setColumns(10);
-		textid.setBounds(296, 448, 92, 39);
-		frame.getContentPane().add(textid);
 		
 		JLabel lblDepartment = new JLabel("Department -");
 		lblDepartment.setFont(new Font("Tahoma", Font.BOLD, 22));
-		lblDepartment.setBounds(430, 448, 158, 39);
-		frame.getContentPane().add(lblDepartment);
 		
 		textdept = new JTextField();
+		textdept.setEditable(false);
 		textdept.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		textdept.setColumns(10);
-		textdept.setBounds(588, 448, 171, 39);
-		frame.getContentPane().add(textdept);
 		
 		JLabel lblYear = new JLabel("Year -");
 		lblYear.setFont(new Font("Tahoma", Font.BOLD, 22));
-		lblYear.setBounds(106, 508, 68, 39);
-		frame.getContentPane().add(lblYear);
 		
 		textyear = new JTextField();
+		textyear.setEditable(false);
 		textyear.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		textyear.setColumns(10);
-		textyear.setBounds(184, 508, 51, 39);
-		frame.getContentPane().add(textyear);
 		
 		JLabel lblDivision = new JLabel("Division -");
 		lblDivision.setFont(new Font("Tahoma", Font.BOLD, 22));
-		lblDivision.setBounds(263, 508, 112, 39);
-		frame.getContentPane().add(lblDivision);
 		
 		textdiv = new JTextField();
+		textdiv.setEditable(false);
 		textdiv.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		textdiv.setColumns(10);
-		textdiv.setBounds(375, 508, 68, 39);
-		frame.getContentPane().add(textdiv);
 		
 		JLabel lblTeacherid = new JLabel("Teacher ID -");
 		lblTeacherid.setFont(new Font("Tahoma", Font.BOLD, 22));
-		lblTeacherid.setBounds(453, 508, 157, 39);
-		frame.getContentPane().add(lblTeacherid);
 		
 		texttid = new JTextField();
+		texttid.setEditable(false);
 		texttid.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		texttid.setColumns(10);
-		texttid.setBounds(601, 508, 58, 39);
-		frame.getContentPane().add(texttid);
 		
 		JLabel lblExam = new JLabel("Exam -");
 		lblExam.setFont(new Font("Tahoma", Font.BOLD, 22));
-		lblExam.setBounds(669, 508, 90, 39);
-		frame.getContentPane().add(lblExam);
 		
 		textsub = new JTextField();
+		textsub.setEditable(false);
 		textsub.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		textsub.setColumns(10);
-		textsub.setBounds(754, 508, 171, 39);
-		frame.getContentPane().add(textsub);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(153, 204, 255));
+		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(106)
+							.addComponent(lblEnterExamId, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
+							.addGap(10)
+							.addComponent(textid, GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+							.addGap(42)
+							.addComponent(lblDepartment, GroupLayout.PREFERRED_SIZE, 158, GroupLayout.PREFERRED_SIZE)
+							.addComponent(textdept, GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+							.addGap(166))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(106)
+							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+							.addGap(41))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(106)
+							.addComponent(lblYear, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+							.addGap(10)
+							.addComponent(textyear, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+							.addGap(28)
+							.addComponent(lblDivision, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
+							.addComponent(textdiv, GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+							.addGap(10)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(148)
+									.addComponent(texttid, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(lblTeacherid, GroupLayout.PREFERRED_SIZE, 157, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 49, Short.MAX_VALUE)))
+							.addGap(10)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(lblExam, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 166, Short.MAX_VALUE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(85)
+									.addComponent(textsub, GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))))
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addGap(358)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+							.addGap(317)))
+					.addGap(59))
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addGap(263)
+					.addComponent(lblDeleteExamination, GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+					.addGap(251))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(27)
+					.addComponent(lblDeleteExamination)
+					.addGap(18)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+					.addGap(21)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblEnterExamId, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textid, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblDepartment, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textdept, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
+					.addGap(21)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblYear, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textyear, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblDivision, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textdiv, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+						.addComponent(texttid, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblTeacherid, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblExam, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textsub, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
+					.addGap(23)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+		);
 		
 		JButton btnReturn = new JButton("return");
 		btnReturn.setBackground(new Color(255, 204, 204));
@@ -208,8 +270,6 @@ public class deleteExam {
 			}
 		});
 		btnReturn.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnReturn.setBounds(296, 590, 171, 39);
-		frame.getContentPane().add(btnReturn);
 		
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.setBackground(new Color(255, 204, 204));
@@ -231,8 +291,27 @@ public class deleteExam {
 			}
 		});
 		btnDelete.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnDelete.setBounds(506, 590, 171, 39);
-		frame.getContentPane().add(btnDelete);
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+					.addGap(17)
+					.addComponent(btnReturn, GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+					.addGap(22)
+					.addComponent(btnDelete, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(17))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(5)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnReturn)
+						.addComponent(btnDelete))
+					.addContainerGap())
+		);
+		panel.setLayout(gl_panel);
+		frame.getContentPane().setLayout(groupLayout);
 	}
 	public void clear()
 	{

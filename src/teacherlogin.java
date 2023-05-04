@@ -14,6 +14,11 @@ import javax.swing.JPasswordField;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.SwingConstants;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Component;
 
 public class teacherlogin {
 
@@ -53,43 +58,72 @@ public class teacherlogin {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setResizable(false);
 		frame.getContentPane().setBackground(new Color(153, 204, 255));
 		frame.setBounds(100, 100, 968, 574);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 		
 		JLabel lblLoginForTeacher = new JLabel("Login for Teacher");
+		lblLoginForTeacher.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLoginForTeacher.setFont(new Font("Tahoma", Font.BOLD, 30));
-		lblLoginForTeacher.setBounds(338, 10, 271, 78);
-		frame.getContentPane().add(lblLoginForTeacher);
 		
 		JPanel panel = new JPanel();
-		panel.setLayout(null);
 		panel.setBackground(new Color(204, 204, 255));
-		panel.setBounds(107, 98, 741, 385);
-		frame.getContentPane().add(panel);
 		
 		JLabel lblUsername = new JLabel("Email");
 		lblUsername.setFont(new Font("Gadugi", Font.BOLD, 28));
-		lblUsername.setBounds(148, 110, 143, 40);
-		panel.add(lblUsername);
 		
 		email = new JTextField();
 		email.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		email.setColumns(10);
-		email.setBounds(301, 116, 259, 37);
-		panel.add(email);
 		
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setFont(new Font("Gadugi", Font.BOLD, 28));
-		lblPassword.setBounds(148, 178, 143, 40);
-		panel.add(lblPassword);
 		
 		JLabel lblEnterTheFollowing = new JLabel("Enter the following details");
+		lblEnterTheFollowing.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEnterTheFollowing.setFont(new Font("Futurist", Font.PLAIN, 28));
-		lblEnterTheFollowing.setBounds(183, 23, 377, 40);
-		panel.add(lblEnterTheFollowing);
+		
+		password = new JPasswordField();
+		password.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblLoginForTeacher, GroupLayout.DEFAULT_SIZE, 934, Short.MAX_VALUE)
+					.addContainerGap())
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(107)
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE)
+					.addGap(106))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblLoginForTeacher, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
+					.addGap(26)
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+					.addGap(89))
+		);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(153, 204, 255));
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+		panel_2.setBackground(new Color(153, 204, 255));
+		
+		JButton btnGoBack = new JButton("return");
+		btnGoBack.setBackground(new Color(255, 204, 204));
+		btnGoBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				frame.setVisible(false);
+				loginApp.main(null);
+			}
+		});
+		btnGoBack.setFont(new Font("Tahoma", Font.BOLD, 18));
 		
 		JButton btnlogin = new JButton("login");
 		btnlogin.setBackground(new Color(255, 204, 204));
@@ -123,26 +157,79 @@ public class teacherlogin {
 			}
 		});
 		btnlogin.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnlogin.setBounds(389, 283, 115, 48);
-		panel.add(btnlogin);
-		
-		password = new JPasswordField();
-		password.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		password.setBounds(301, 184, 259, 38);
-		panel.add(password);
-		
-		JButton btnGoBack = new JButton("return");
-		btnGoBack.setBackground(new Color(255, 204, 204));
-		btnGoBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				frame.setVisible(false);
-				loginApp.main(null);
-			}
-		});
-		btnGoBack.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnGoBack.setBounds(244, 283, 115, 48);
-		panel.add(btnGoBack);
+		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
+		gl_panel_2.setHorizontalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnGoBack, GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnlogin, GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+					.addGap(7))
+		);
+		gl_panel_2.setVerticalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnGoBack, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnlogin, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		panel_2.setLayout(gl_panel_2);
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(10)
+					.addComponent(lblEnterTheFollowing, GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
+					.addGap(10))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(118)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(30)
+							.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addComponent(email, GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+								.addComponent(password, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))
+							.addGap(29))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(30)
+							.addComponent(lblUsername, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 317, Short.MAX_VALUE))
+						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE))
+					.addGap(133))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(239)
+					.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+					.addGap(245))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(10)
+					.addComponent(lblEnterTheFollowing, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addGap(42)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(24)
+							.addComponent(email, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
+							.addGap(31)
+							.addComponent(password, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(18)
+							.addComponent(lblUsername, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+							.addGap(28)
+							.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 158, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
+					.addGap(17))
+		);
+		panel.setLayout(gl_panel);
+		frame.getContentPane().setLayout(groupLayout);
 	}
 
 }

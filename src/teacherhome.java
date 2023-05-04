@@ -14,6 +14,10 @@ import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.Frame;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class teacherhome {
 
@@ -51,33 +55,23 @@ public class teacherhome {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setResizable(false);
+		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		frame.getContentPane().setBackground(new Color(153, 204, 255));
 		frame.setBounds(100, 100, 1014, 664);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 		
 		JLabel lblTeacherHomePage = new JLabel("Teacher's Home Page");
 		lblTeacherHomePage.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTeacherHomePage.setFont(new Font("Tahoma", Font.BOLD, 32));
-		lblTeacherHomePage.setBounds(283, 10, 431, 78);
-		frame.getContentPane().add(lblTeacherHomePage);
 		
 		JLabel Tname = new JLabel("Name - "+teacherlogin.tname);
 		Tname.setFont(new Font("Tahoma", Font.BOLD, 18));
-		Tname.setBounds(10, 0, 431, 38);
-		frame.getContentPane().add(Tname);
 		
 		JLabel Tid = new JLabel("Teacher ID - "+teacherlogin.tid);
 		Tid.setFont(new Font("Tahoma", Font.BOLD, 18));
-		Tid.setBounds(10, 28, 281, 38);
-		frame.getContentPane().add(Tid);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(204, 204, 255));
-		panel.setBounds(98, 98, 813, 473);
-		frame.getContentPane().add(panel);
-		panel.setLayout(null);
 		
 		JButton btnNewButton = new JButton("Add Exam");
 		btnNewButton.setBackground(new Color(255, 204, 204));
@@ -88,12 +82,8 @@ public class teacherhome {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnNewButton.setBounds(46, 399, 224, 53);
-		panel.add(btnNewButton);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(46, 29, 722, 297);
-		panel.add(scrollPane);
 		
 		table = new JTable();
 		table.setBackground(new Color(255, 255, 204));
@@ -108,8 +98,6 @@ public class teacherhome {
 			}
 		});
 		btnDeleteExamination.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnDeleteExamination.setBounds(298, 399, 224, 53);
-		panel.add(btnDeleteExamination);
 		
 		JButton btnSeeMarks = new JButton("Student Score");
 		btnSeeMarks.setBackground(new Color(255, 204, 204));
@@ -120,8 +108,6 @@ public class teacherhome {
 			}
 		});
 		btnSeeMarks.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnSeeMarks.setBounds(546, 399, 224, 53);
-		panel.add(btnSeeMarks);
 		
 		JButton btnLogOut = new JButton("log out");
 		btnLogOut.setBackground(new Color(255, 204, 204));
@@ -132,8 +118,73 @@ public class teacherhome {
 			}
 		});
 		btnLogOut.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnLogOut.setBounds(397, 579, 224, 38);
-		frame.getContentPane().add(btnLogOut);
+		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(10)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(273)
+							.addComponent(lblTeacherHomePage, GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE))
+						.addComponent(Tname, GroupLayout.PREFERRED_SIZE, 431, GroupLayout.PREFERRED_SIZE)
+						.addComponent(Tid, GroupLayout.PREFERRED_SIZE, 281, GroupLayout.PREFERRED_SIZE))
+					.addGap(165)
+					.addComponent(btnLogOut, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(98)
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 813, Short.MAX_VALUE)
+					.addGap(89))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(Tname, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(28)
+							.addComponent(Tid, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(10)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(btnLogOut)
+								.addComponent(lblTeacherHomePage, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE))))
+					.addGap(10)
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+					.addGap(59))
+		);
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(46)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 722, Short.MAX_VALUE)
+							.addGap(2))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+							.addGap(28)
+							.addComponent(btnDeleteExamination, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+							.addGap(24)
+							.addComponent(btnSeeMarks, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)))
+					.addGap(43))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(29)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+					.addGap(73)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnDeleteExamination, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnSeeMarks, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE))
+					.addGap(21))
+		);
+		panel.setLayout(gl_panel);
+		frame.getContentPane().setLayout(groupLayout);
 	}
 	public void printExams()
 	{
